@@ -107,41 +107,26 @@
             $this->assertEquals($new_name, $test_stylist->getName());
         }//end test
 
+        function test_cuisine_delete()
+        {
+
+            //Arrange
+            $name = "Vidal Sassoon";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+
+            $name2 = "Monsieur Champagne";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
 
 
+            //Act
+            $test_stylist->delete();
 
+            //Assert
+            $this->assertEquals([$test_stylist2],Stylist::getAll());
+        }//end test
 
+    }//end of tests
 
-    //
-    //  function test_cuisine_delete()
-    //  {
-    //
-    //      $style = "Thai";
-    //      $test_cuisine = new Cuisine($style);
-    //      $test_cuisine->save();
-    //
-    //      $style2 = "burgers";
-    //      $test_cuisine2 = new Cuisine($style2);
-    //      $test_cuisine2->save();
-    //
-    //      $name = "Pok Pok";
-    //      $category_id = $test_cuisine->getId();
-    //      $test_restaurant = new Restaurant($name, $category_id);
-    //      $test_restaurant->save();
-    //
-    //      $name2 = "Dicks";
-    //      $category_id2 = $test_cuisine2->getId();
-    //      $test_restaurant2 = new Restaurant($name2, $category_id2);
-    //      $test_restaurant2->save();
-    //
-    //
-    //      //Act
-    //      $test_cuisine->delete();
-    //
-    //      //Assert
-    //      $this->assertEquals([$test_restaurant2],Restaurant::getAll());
-    //
-    //  }
-
-}
 ?>

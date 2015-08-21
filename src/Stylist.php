@@ -38,6 +38,12 @@ class Stylist {
         $this->setName($new_name);
     }//end of update
 
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+      //$GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+  }//end of delete
+
     static function find($search_id)
     {
         $found_stylist = null;
