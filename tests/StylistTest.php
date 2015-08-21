@@ -24,17 +24,20 @@
           Client::deleteAll();
       }
 
-      function test_stylist_getName()
+      function test_stylist_getTest()
       {
            //Arrange
            $name = "Vidal Sassoon";
-           $test_stylist = new Stylist($name);
+           $id = 1;
+           $test_stylist = new Stylist($name, $id);
 
            //Act
            $result = $test_stylist->getName();
+           $result2 = $test_stylist->getId();
 
            //Assert
            $this->assertEquals($name, $result);
+           $this->assertEquals(true, is_numeric($result2));
 
        }//end test
 
@@ -53,18 +56,7 @@
     //   }
 
 
-    //
-    // function test_cuisine_getId()
-    // {
-    //      //Arrange
-    //      $style = "Thai";
-    //      $id = 1;
-    //      $test_cuisine = new Cuisine($style, $id);
-    //      //Act
-    //      $result = $test_cuisine->getId();
-    //      //Assert
-    //      $this->assertEquals(true, is_numeric($result));
-    // }
+
 
     //
     // function test_cuisine_getAll()
