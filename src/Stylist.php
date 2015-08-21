@@ -1,24 +1,24 @@
 <?php
 
-class Cuisine {
+class Stylist {
 
+    private $name;
     private $id;
-    private $style;
 
-    function __construct($style, $id=null)
+    function __construct($name, $id=null)
     {
-        $this->style = $style;
+        $this->name = $name;
         $this->id = $id;
     }
 
-    function setStyle($new_style)
+    function setName($new_name)
     {
-        $this->style = (string) $new_style;
+        $this->name = (string) $new_name;
     }
 
-    function getStyle()
+    function getName()
     {
-        return $this->style;
+        return $this->stylist;
     }
 
     function getId()
@@ -28,66 +28,9 @@ class Cuisine {
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO cuisines (style) VALUES ('{$this->getstyle()}')");
+        $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}')");
         $this->id= $GLOBALS['DB']->lastInsertId();
     }
 
-    function update($new_style)
-    {
-        $GLOBALS['DB']->exec("UPDATE cuisines SET style = '{$new_style}' WHERE id = {$this->getId()};");
-        $this->setStyle($new_style);
-    }
-
-    function delete()
-    {
-        $GLOBALS['DB']->exec("DELETE FROM cuisines WHERE id = {$this->getId()};");
-        $GLOBALS['DB']->exec("DELETE FROM restaurants WHERE cuisine_id = {$this->getId()};");
-    }
-
-    function getRestaurants()
-    {
-        $restaurants = array();
-        $returned_restaurants = $GLOBALS['DB']->query("SELECT * FROM restaurants WHERE cuisine_id = {$this->getId()};");
-        foreach($returned_restaurants as $restaurant) {
-            $description = $restaurant['description'];
-            $id = $restaurant['id'];
-            $cuisine_id = $restaurant['cuisine_id'];
-            $new_restaurant = new restaurant($description, $id, $cuisine_id);
-            array_push($restaurants, $new_restaurant);
-        }
-        return $restaurants;
-    }
-
-    static function getAll()
-    {
-        $returned_cuisines = $GLOBALS['DB']->query("SELECT * FROM cuisines;");
-        $cuisines = array();
-        foreach($returned_cuisines as $cuisine) {
-            $style = $cuisine['style'];
-            $id = $cuisine['id'];
-            $new_cuisine = new cuisine($style, $id);
-            array_push($cuisines, $new_cuisine);
-        }
-        return $cuisines;
-    }
-
-    static function deleteAll()
-    {
-        $GLOBALS['DB']->exec("DELETE FROM cuisines;");
-    }
-
-    static function find($search_id)
-    {
-        $found_cuisine = null;
-        $cuisines = cuisine::getAll();
-        foreach($cuisines as $cuisine) {
-            $cuisine_id = $cuisine->getId();
-            if ($cuisine_id == $search_id) {
-              $found_cuisine = $cuisine;
-            }
-        }
-        return $found_cuisine;
-    }
-}
 
 ?>

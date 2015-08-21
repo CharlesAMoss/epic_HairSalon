@@ -5,12 +5,14 @@ class Client {
     private $name;
     private $stylist_id;
     private $id;
+    private $appointment;
 
-    function __construct($name, $stylist_id, $id=null)
+    function __construct($name, $stylist_id, $id=null, $appointment)
     {
         $this->name = $name;
         $this->stylist_id = $stylist_id;
         $this->id = $id;
+        $this->appointment = $appointment;
 
     }
 
@@ -34,6 +36,15 @@ class Client {
         return $this->id;
     }
 
+    function setAppointment($new_appointment)
+    {
+        $this->appointment = (string) $new_appointment;
+    }
+
+    function getAppointment()
+    {
+        return $this->appointment;
+    }
 
 }
 
