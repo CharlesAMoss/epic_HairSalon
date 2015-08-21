@@ -7,7 +7,7 @@
 
 ## Description
 
-_User enters a "stylist" and corresponding "clients" to create a directory listing by stylist._
+_User enters a "stylist" and corresponding "clients" to create a directory listing by stylist. User can edit the name of both "stylist" and "client" as well an delete._
 
 ## Setup
 
@@ -23,12 +23,18 @@ _You then only need to start up a local PHP server from within the "web" directo
 
 _This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
 
+## Sad Violin Music
 
+_Due to a 2.5 detour through local mySQL config quirks hell. You will find that this is not complete. I will be resubmitting asap._
 
 ## To Do
 
-* add mySQL to setup
-
+* finish client class and tests
+* finish client routes
+* finish client twig
+* confirm features
+* provide documentation of db
+* polish
 
 ### Legal
 
