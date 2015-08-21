@@ -46,6 +46,11 @@ class Client {
         return $this->appointment;
     }
 
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM clients;");
+    }
 }
 
 ?>
