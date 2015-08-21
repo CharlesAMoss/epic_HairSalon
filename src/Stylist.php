@@ -30,7 +30,13 @@ class Stylist {
     {
         $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}')");
         $this->id= $GLOBALS['DB']->lastInsertId();
-    }// save
+    }//end of save
+
+    function update($new_name)
+    {
+        $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        $this->setName($new_name);
+    }//end of update
 
     static function find($search_id)
     {
@@ -40,10 +46,11 @@ class Stylist {
             $stylist_id = $stylist->getId();
             if ($stylist_id == $search_id) {
               $found_stylist = $stylist;
-            }
-        }
+            }//end of if
+        }//end of foreach
+
         return $found_stylist;
-    }
+    }//end of find
 
     static function getAll()
     {
@@ -57,7 +64,6 @@ class Stylist {
         }//end of foreach
 
         return $stylists;
-
     }//end of getAll
 
     static function deleteAll()

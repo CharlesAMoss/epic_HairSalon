@@ -60,6 +60,7 @@
             $name = "Vidal Sassoon";
             $test_stylist = new Stylist($name);
             $test_stylist->save();
+
             $name2 = "Monsieur Champagne";
             $test_stylist2 = new Stylist($name2);
             $test_stylist2->save();
@@ -72,52 +73,45 @@
             $this->assertEquals($test_stylist, $result);
         }//end test
 
+        function test_stylist_getALL()
+        {
+            //Arrange
+            $name = "Vidal Sassoon";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
 
-    //
-    // function test_cuisine_getAll()
-    // {
-    //     //Arrange
-    //     $style = "Thai";
-    //     $id = null;
-    //     $test_cuisine = new Cuisine($style, $id);
-    //     $test_cuisine->save();
-    //
-    //     $name= "pok pok";
-    //     $cuisine_id = $test_cuisine->getId();
-    //     $test_restaurant = new Restaurant($name, $cuisine_id, $id);
-    //     $test_restaurant->save();
-    //
-    //     $name2= "New Thai Blues";
-    //     $test_restaurant2 = new Restaurant($name2, $cuisine_id, $id);
-    //     $test_restaurant2->save();
-    //
-    //     //Act
-    //     $result = Restaurant::getAll();
-    //
-    //     //Assert
-    //     $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
-    // }
-    //
+            $name2 = "Monsieur Champagne";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
 
-    //
-    // function test_cuisine_update()
-    // {
-    //
-    //     //Arrange
-    //     $style = "Thai";
-    //     $id = null;
-    //     $test_cuisine = new Cuisine($style, $id);
-    //     $test_cuisine->save();
-    //
-    //     $new_style = "Asian";
-    //
-    //     //Act
-    //     $test_cuisine->update($new_style);
-    //
-    //     //Assert
-    //     $this->assertEquals("Asian", $test_cuisine->getStyle());
-    //
-    //  }
+            //Act
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([$test_stylist, $test_stylist2], $result);
+        }//end test
+
+        function test_cuisine_update()
+        {
+            //Arrange
+            $name = "Vidal Sassoon";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+
+            $new_name = "Vidal Baboon";
+
+            //Act
+            $test_stylist->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_stylist->getName());
+        }//end test
+
+
+
+
+
+
     //
     //  function test_cuisine_delete()
     //  {
