@@ -54,7 +54,23 @@
            $this->assertEquals($test_stylist,$result[0]);
         }//end test
 
+        function test_stylist_find()
+        {
+            //Arrange
+            $name = "Vidal Sassoon";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $name2 = "Monsieur Champagne";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
 
+            //Act
+            $id = $test_stylist->getId();
+            $result = Stylist::find($id);
+
+            //Assert
+            $this->assertEquals($test_stylist, $result);
+        }//end test
 
 
     //
@@ -82,21 +98,7 @@
     //     $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
     // }
     //
-    // function test_cuisine_find()
-    // {
-    //     //Arrange
-    //     $cuisine1 = new Cuisine("Thai");
-    //     $cuisine1->save();
-    //     $cuisine2 = new Cuisine("Dogfood");
-    //     $cuisine2->save();
-    //
-    //     //Act
-    //     $id = $cuisine1->getId();
-    //     $result = Cuisine::find($id);
-    //
-    //     //Assert
-    //     $this->assertEquals($cuisine1, $result);
-    // }
+
     //
     // function test_cuisine_update()
     // {
