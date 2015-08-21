@@ -1,0 +1,53 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: #f1f1f1;
+	color: #404040;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+
+input{
+    width: 100%;
+    display: block;
+}
+
+/* extend bootstrap */
+
+.page-header {
+	border-color: #99ccff;
+}
+
+.btn {
+	min-width: 30%;
+}
+
+/* typography */
+
+body {
+	font-family: Tahoma, Verdana, sans-serif;
+}
+
+
+h2 {
+    margin-bottom: 1.5em;
+}
+
+label {
+	margin:1em 0 1em 0;
+}
+
+/* utility */
+
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
