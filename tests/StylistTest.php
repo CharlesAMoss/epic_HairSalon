@@ -19,13 +19,13 @@
     {
 
         protected function tearDown()
-      {
+        {
           Stylist::deleteAll();
           Client::deleteAll();
-      }
+        }
 
-      function test_stylist_getTest()
-      {
+        function test_stylist_getTest()
+        {
            //Arrange
            $name = "Vidal Sassoon";
            $id = 1;
@@ -38,22 +38,21 @@
            //Assert
            $this->assertEquals($name, $result);
            $this->assertEquals(true, is_numeric($result2));
+        }//end test
 
-       }//end test
+        function test_stylist_save()
+        {
+           //Arrange
+           $name = "Vidal Sassoon";
+           $test_stylist = new Stylist($name);
 
-    //   function test_stylist_save()
-    //   {
-    //        //Arrange
-    //        $name = "Vidal Sassoon";
-    //        $test_stylist = new Stylist($name);
-      //
-    //        //Act
-    //        $test_stylist->save();
-      //
-    //        //Assert
-    //        $result = Stylist::getAll();
-    //        $this->assertEquals($test_stylist,$result[0]);
-    //   }
+           //Act
+           $test_stylist->save();
+
+           //Assert
+           $result = Stylist::getAll();
+           $this->assertEquals($test_stylist,$result[0]);
+        }//end test
 
 
 

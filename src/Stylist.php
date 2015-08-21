@@ -32,18 +32,20 @@ class Stylist {
         $this->id= $GLOBALS['DB']->lastInsertId();
     }// save
 
-    // static function getAll()
-    // {
-    //     $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
-    //     $cuisines = array();
-    //     foreach($returned_stylists as $stylist) {
-    //         $name = $stylist['name'];
-    //         $id = $stylists['id'];
-    //         $new_stylist = new Stylist($name, $id);
-    //         array_push($stylists, $new_stylist);
-    //     }//end of foreach
-    //     return $stylists;
-    // }//end of getAll
+    static function getAll()
+    {
+        $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+        $stylists = array();
+        foreach($returned_stylists as $stylist) {
+            $name = $stylist['name'];
+            $id = $stylist['id'];
+            $new_stylist = new Stylist($name, $id);
+            array_push($stylists, $new_stylist);
+        }//end of foreach
+
+        return $stylists;
+
+    }//end of getAll
 
     static function deleteAll()
     {
