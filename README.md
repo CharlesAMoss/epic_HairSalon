@@ -28,7 +28,7 @@ _You then only need to start up a local PHP server from within the "web" directo
 
 -> CREATE TABLE stylists (id serial PRIMARY KEY, name varchar (255));
 
--> CREATE TABLE clients (id serial PRIMARY KEY, name varchar (255), category_id int, appointment date);
+-> CREATE TABLE clients (id serial PRIMARY KEY, name varchar (255), stylist_id int, appointment date);
 
 
 ```
@@ -41,7 +41,7 @@ _This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://p
 
 ## Sad Violin Music
 
-_Due to a 2.5 detour through local mySQL config quirks hell. You will find that this is not complete. I will be resubmitting asap._
+_Due to a 2.5 hour detour through local mySQL config quirks hell. You will find that this is not complete. I will be resubmitting asap._
 
 ## To Do
 

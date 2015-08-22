@@ -14,7 +14,7 @@ class Client {
         $this->id = $id;
         $this->appointment = $appointment;
 
-    }
+    }//end of constructor
 
     function setName($new_name)
     {
@@ -45,6 +45,12 @@ class Client {
     {
         return $this->appointment;
     }
+
+    function save()
+    {
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, appointment) VALUES ('{$this->getName()}', {$this->getStylistId()}, '{$this->getAppointment()}')");
+        $this->id= $GLOBALS['DB']->lastInsertId();
+    }//end of save
 
     static function getAll()
     {

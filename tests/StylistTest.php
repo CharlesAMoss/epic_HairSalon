@@ -7,13 +7,13 @@
 
     require_once "src/Stylist.php";
     require_once "src/Client.php";
-    require_once "secret/stuff.php";
+    require "secret/stuff.php";
 
 
     $server = 'mysql:host=127.0.0.1;dbname=hair_salon_test';
     $username = 'root';
     $password = $pass;
-    $DB = new PDO($server, $username, $password);
+    $DB = new PDO($server, $username, $password );
 
 
     class StylistTest extends PHPUnit_Framework_TestCase
