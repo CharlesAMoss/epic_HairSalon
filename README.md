@@ -19,6 +19,22 @@ $ composer install
 
 _You then only need to start up a local PHP server from within the "web" directory within the project's folder and point your browser to whatever local host server you have created._
 
+## Database Setup
+
+```
+-> CREATE DATABASE hair_salon;
+
+-> USE hair_salon;
+
+-> CREATE TABLE stylists (id serial PRIMARY KEY, name varchar (255));
+
+-> CREATE TABLE clients (id serial PRIMARY KEY, name varchar (255), category_id int, appointment date);
+
+
+```
+
+To produce the "hair_salon_test" database, make a copy via myPHPadmin by selecting "hair_salon" and clicking the "Operations" tab. You will see a "copy database to:" section, fill the input with "hair_salon_test", select "Structure only", and click "Go".
+
 ## Technologies Used
 
 _This project makes use of PHP, mySQL, the testing framework [PHPUnit](https://phpunit.de/), the micro-framework [Silex](http://silex.sensiolabs.org/), and uses [Twig](http://twig.sensiolabs.org/) templates._
@@ -33,7 +49,7 @@ _Due to a 2.5 detour through local mySQL config quirks hell. You will find that 
 * finish client routes
 * finish client twig
 * confirm features
-* provide documentation of db
+* provide documentation of db / export
 * polish
 
 ### Legal
