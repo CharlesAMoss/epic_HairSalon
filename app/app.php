@@ -7,7 +7,7 @@
 
     $app = new Silex\Application();
     $app['debug'] = true;
-    $server = 'mysql:host=127.0.0.1;dbname=hair_salon_test';
+    $server = 'mysql:host=127.0.0.1;dbname=hair_salon';
     $username = 'root';
     $password = $pass;
     $DB = new PDO($server, $username, $password);

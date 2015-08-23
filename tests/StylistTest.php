@@ -21,8 +21,8 @@
 
         protected function tearDown()
         {
-          Stylist::deleteAll();
-          Client::deleteAll();
+           Stylist::deleteAll();
+           Client::deleteAll();
         }
 
         function test_stylist_getTest()
@@ -92,7 +92,7 @@
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
         }//end test
 
-        function test_cuisine_update()
+        function test_stylist_update()
         {
             //Arrange
             $name = "Vidal Sassoon";
@@ -108,7 +108,7 @@
             $this->assertEquals($new_name, $test_stylist->getName());
         }//end test
 
-        function test_cuisine_delete()
+        function test_stylist_delete()
         {
 
             //Arrange
@@ -127,6 +127,31 @@
             //Assert
             $this->assertEquals([$test_stylist2],Stylist::getAll());
         }//end test
+
+        function test_stylist_getClient()
+        {
+
+            //Arrange
+            $name = "Vidal Sassoon";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $name2 = "Mr. T";
+            $stylist_id = $test_stylist->getId();
+            $appointment = "09/09/2015";
+            $test_client = new Client($name2, $stylist_id, null, $appointment);
+            $test_client->save();
+
+            //Act
+            $result = $test_stylist->getClient();
+
+            //Assert
+            $this->assertEquals($test_client,$result);
+
+        }//end test
+
+
 
     }//end of tests
 

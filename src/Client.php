@@ -7,7 +7,7 @@ class Client {
     private $id;
     private $appointment;
 
-    function __construct($name, $stylist_id, $id=null, $appointment)
+    function __construct($name, $stylist_id, $id=null, $appointment='')
     {
         $this->name = $name;
         $this->stylist_id = $stylist_id;
@@ -48,7 +48,7 @@ class Client {
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, appointment) VALUES ('{$this->getName()}', {$this->getStylistId()}, '{$this->getAppointment()}')");
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, appointment) VALUES ('{$this->getName()}', {$this->getStylistId()}, {$this->getAppointment()})");
         $this->id= $GLOBALS['DB']->lastInsertId();
     }//end of save
 
@@ -61,17 +61,34 @@ class Client {
             $id = $client['id'];
             $stylist_id = $client['stylist_id'];
             $appointment = $client['appointment'];
-            $new_restaurant = new Client($name, $stylist_id, $id,$appointment);
-            array_push($clients, $new_rclient);
+            $new_client = new Client($name, $stylist_id, $id, $appointment);
+            array_push($clients, $new_client);
         }//end of foreach
 
         return $clients;
     }//end of get all
 
+    static function find($search_id)
+    {
+        $found_client = null;
+        $clients = Client::getAll();
+        foreach($clients as $client) {
+            $client_id = $client->getId();
+            if ($client_id == $search_id) {
+                $found_client = $client;
+            }//end of if
+        }//end of foreach
+
+        return $found_client;
+    }//end of find
+
     static function deleteAll()
     {
         $GLOBALS['DB']->exec("DELETE FROM clients;");
     }//end of delete all
+
+
+
 }
 
 ?>

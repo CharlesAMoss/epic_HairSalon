@@ -41,7 +41,7 @@ class Stylist {
     function delete()
     {
         $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-      //$GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+        $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
     }//end of delete
 
     function getClient()
@@ -56,6 +56,7 @@ class Stylist {
             $new_client = new Client($name, $id, $stylist_id, $appointment);
             array_push($clients, $new_client);
         }//end of foreach
+
         return $clients;
     }//end of getClient
 
