@@ -12,7 +12,7 @@ class Client {
         $this->name = $name;
         $this->stylist_id = $stylist_id;
         $this->id = $id;
-        
+
     }//end of constructor
 
     function setName($new_name)
@@ -35,12 +35,22 @@ class Client {
         return $this->id;
     }
 
-
     function save()
     {
         $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()})");
         $this->id= $GLOBALS['DB']->lastInsertId();
     }//end of save
+
+    function update($new_name)
+    {
+        $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        $this->setName($new_name);
+    }//end of update
+
+    function delete()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+    }//end of delete
 
     static function getAll()
     {
@@ -78,6 +88,6 @@ class Client {
 
 
 
-}
+}// end of Client class
 
 ?>

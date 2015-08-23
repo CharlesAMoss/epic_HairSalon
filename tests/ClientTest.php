@@ -20,8 +20,9 @@
 
         protected function tearDown()
         {
-            Stylist::deleteAll();
             Client::deleteAll();
+            Stylist::deleteAll();
+
         }
 
         function test_client_getTest()
@@ -34,14 +35,13 @@
 
             $name2 = "Mr. T";
             $stylist_id = $test_stylist->getId();
-
             $test_client = new Client($name2, $stylist_id, null );
             $test_client->save();
 
             //Act
             $result = $test_client->getName();
-            $result2 = $test_client->getId();
-            
+            $result2 = $test_client->getStylistId();
+
 
             //Assert
             $this->assertEquals($name2, $result, 'name');
@@ -49,6 +49,25 @@
 
         }//end test
 
+        function test_stylist_save()
+        {
+           //Arrange
+           $name = "Vidal Sassoon";
+           $id = null;
+           $test_stylist = new Stylist($name, $id);
+           $test_stylist->save();
+
+           $name2 = "Mr. T";
+           $stylist_id = $test_stylist->getId();
+           $test_client = new Client($name2, $stylist_id, null );
+
+           //Act
+           $test_client->save();
+
+           //Assert
+           $result = Client::getAll();
+           $this->assertEquals($test_client,$result[0]);
+        }//end test
 
         function test_client_find()
         {
@@ -74,13 +93,14 @@
             //Act
             $result = Client::find($test_client->getId());
 
-            //print_r($test_client);
-            //print_r(Client::find($test_client->getId()));
-            //print_r($result);
-
             //Assert
             $this->assertEquals($test_client, $result);
         }//end test
+
+
+
+
+
     }//end of tests
 
 

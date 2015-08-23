@@ -128,28 +128,7 @@
             $this->assertEquals([$test_stylist2],Stylist::getAll());
         }//end test
 
-        function test_stylist_getClient()
-        {
-
-            //Arrange
-            $name = "Vidal Sassoon";
-            $id = null;
-            $test_stylist = new Stylist($name, $id);
-            $test_stylist->save();
-
-            $name2 = "Mr. T";
-            $stylist_id = $test_stylist->getId();
-            $test_client = new Client($name2, $stylist_id, $id );
-            $test_client->save();
-
-            //Act
-            $result = $test_stylist->getClient();
-            print_r($result);
-
-            //Assert
-            $this->assertEquals($test_client,$result);
-
-        }//end test
+        
 
 
 
