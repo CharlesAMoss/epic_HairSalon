@@ -7,12 +7,12 @@
 
     require_once "src/Stylist.php";
     require_once "src/Client.php";
-    require "secret/stuff.php";
+
 
 
     $server = 'mysql:host=127.0.0.1;dbname=hair_salon_test';
     $username = 'root';
-    $password = $pass;
+    $password = 'root';
     $DB = new PDO($server, $username, $password );
 
 
@@ -139,12 +139,12 @@
 
             $name2 = "Mr. T";
             $stylist_id = $test_stylist->getId();
-            $appointment = "09/09/2015";
-            $test_client = new Client($name2, $stylist_id, null, $appointment);
+            $test_client = new Client($name2, $stylist_id, $id );
             $test_client->save();
 
             //Act
             $result = $test_stylist->getClient();
+            print_r($result);
 
             //Assert
             $this->assertEquals($test_client,$result);

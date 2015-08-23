@@ -5,15 +5,14 @@ class Client {
     private $name;
     private $stylist_id;
     private $id;
-    private $appointment;
 
-    function __construct($name, $stylist_id, $id=null, $appointment='')
+
+    function __construct($name, $stylist_id, $id=null )
     {
         $this->name = $name;
         $this->stylist_id = $stylist_id;
         $this->id = $id;
-        $this->appointment = $appointment;
-
+        
     }//end of constructor
 
     function setName($new_name)
@@ -36,19 +35,10 @@ class Client {
         return $this->id;
     }
 
-    function setAppointment($new_appointment)
-    {
-        $this->appointment = (string) $new_appointment;
-    }
-
-    function getAppointment()
-    {
-        return $this->appointment;
-    }
 
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, appointment) VALUES ('{$this->getName()}', {$this->getStylistId()}, {$this->getAppointment()})");
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()})");
         $this->id= $GLOBALS['DB']->lastInsertId();
     }//end of save
 
@@ -60,8 +50,7 @@ class Client {
             $name = $client['name'];
             $id = $client['id'];
             $stylist_id = $client['stylist_id'];
-            $appointment = $client['appointment'];
-            $new_client = new Client($name, $stylist_id, $id, $appointment);
+            $new_client = new Client($name, $stylist_id, $id);
             array_push($clients, $new_client);
         }//end of foreach
 
