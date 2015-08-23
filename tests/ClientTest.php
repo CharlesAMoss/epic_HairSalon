@@ -97,7 +97,7 @@
             $this->assertEquals($test_client, $result);
         }//end test
 
-        function test_stylist_getALL()
+        function test_client_getALL()
         {
             //Arrange
             $name = "Vidal Sassoon";
@@ -125,6 +125,26 @@
             $this->assertEquals([$test_client, $test_client2], $result);
         }//end test
 
+        function test_stylist_update()
+        {
+            //Arrange
+            $name = "Vidal Sassoon";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+
+            $name1 = "Mr. T";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($name1, $stylist_id, null);
+            $test_client->save();
+
+            $new_name = "Clubber Lang";
+
+            //Act
+            $test_client->update($new_name);
+
+            //Assert
+            $this->assertEquals($new_name, $test_client->getName());
+        }//end test
 
 
 
