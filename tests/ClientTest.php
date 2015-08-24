@@ -125,7 +125,7 @@
             $this->assertEquals([$test_client, $test_client2], $result);
         }//end test
 
-        function test_stylist_update()
+        function test_client_update()
         {
             //Arrange
             $name = "Vidal Sassoon";
@@ -146,7 +146,7 @@
             $this->assertEquals($new_name, $test_client->getName());
         }//end test
 
-        function test_stylist_delete()
+        function test_client_delete()
         {
 
             //Arrange
@@ -176,10 +176,6 @@
             $this->assertEquals([$test_client2],Client::getAll());
         }//end test
 
-
-
     }//end of tests
-
-
 
 ?>

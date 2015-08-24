@@ -58,6 +58,21 @@ class Stylist {
         return $found_stylist;
     }//end of find
 
+    function getClient()
+    {
+        $clients = array();
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+        foreach($returned_clients as $client) {
+            $name = $client['name'];
+            $id = $client['id'];
+            $stylist_id = $client['stylist_id'];
+            $new_client = new Client($name, $stylist_id, $id);
+            array_push($clients, $new_client);
+        }//end of foreach
+
+        return $clients;
+    }//end of getClient
+
     static function getAll()
     {
         $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
