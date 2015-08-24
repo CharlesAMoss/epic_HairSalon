@@ -45,11 +45,11 @@ _Due to a 2.5 hour detour through local mySQL config quirks hell. You will find 
 
 ## To Do
 
-* finish client class and tests
+* finish client class and tests **completed 8/23/15**
 * finish client routes
 * finish client twig
 * confirm features
-* provide documentation of db / export
+* provide documentation of db / export **completed 8/23/15**
 * polish
 
 ### Legal
