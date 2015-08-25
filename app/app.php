@@ -21,8 +21,8 @@
     });
 
     $app->get("/stylists/{id}", function($id) use ($app) {
-        $stylist = Stylist::find($id);
-        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'client' => $stylist->getClient()));
+        $found_stylist = Stylist::find($id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'client' => $found_stylist->getClient()));
     });
 
     $app->post("/clients", function() use ($app) {
