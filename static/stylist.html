@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>To Do List</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style>
+        .due{
+            color : red;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>ben</h1>
+
+                            <h4>List of stylists:</h4>
+
+            <h4>Add a Client</h4>
+
+            <form action='/client' method='post'>
+                <input id="category_id" name="category_id" type="hidden" value="13">
+                <label for='name'>client name:</label>
+                <input id='name' name='name' type='text'>
+
+
+                <button type='submit' class="btn btn-success">Add client</button>
+            </form>
+
+            <form action='/delete_client' method='post'>
+                <input id="stylist_id" name="stylist_id" type="hidden" value="13">
+                <button type='submit' class="btn btn-danger">Clear all Clients</button>
+            </form>
+
+
+            <p><a class="btn btn-primary" href='/'>Home</a></p>
+        </div>
+</body>
+</html>
