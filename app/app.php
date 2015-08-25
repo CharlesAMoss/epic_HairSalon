@@ -12,6 +12,9 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
@@ -23,6 +26,18 @@
     $app->get("/stylists/{id}", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'client' => $found_stylist->getClient()));
+    });
+
+    $app->get("/stylists/{id}/edit", function($id) use ($app) {
+        $stylist = Stylists::find($id);
+        return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $stylist));
+    });
+
+    $app->patch("/stylists/{id}", function($id) use ($app) {
+        $name = $_POST['name'];
+        $stylist = Stylist::find($id);
+        $stylist->update($name);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'Clients' => $stylist->getClients()));
     });
 
     $app->post("/clients", function() use ($app) {
