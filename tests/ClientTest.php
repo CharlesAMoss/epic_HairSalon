@@ -9,7 +9,7 @@
     require_once "src/Client.php";
 
 
-    $server = 'mysql:host=127.0.0.1;dbname=hair_salon_test';
+    $server = 'mysql:host=localhost;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

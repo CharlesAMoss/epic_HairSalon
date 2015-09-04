@@ -11,12 +11,12 @@
     </head>
     <body>
         <div class="container">
-            <h1>{{ stylist.getName }}</h1>
+            <h1>{{ client.getName }}</h1>
 
-            {% if stylist is not empty %}
+            {% if client is not empty %}
                 <h4>List of stylists:</h4>
-                    {% for styl in stylist %}
-                        <p><strong>{{ styl.getName }}<strong></p>
+                    {% for clie in client %}
+                        <p><strong>{{ clie.getName }}<strong></p>
 
                     {% endfor %}
             {% endif %}
